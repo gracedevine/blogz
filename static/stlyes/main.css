@@ -1,0 +1,39 @@
+h1 {
+    color:turquoise;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2 {
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    font-family: "Helvetica", sans-serif;
+    background-color: black;
+    color: turquoise;
+}
+
+p {
+    color: white;
+}
+
+.error {
+    color: red;
+}
+
+.date {
+    color: turquoise;
+}
+
+nav a {
+    border: 1px solid;
+    color:turquoise;
+    border-color: turquoise;
+    font-size: 1.7em;
+    text-decoration: none;
+}
+
+h3 {
+    color: white;
+}
