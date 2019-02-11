@@ -9,7 +9,7 @@ app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:yes@localhost:8889/build-a-blog'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
-
+app.secret_key = 'y337kGcys&zP3B'
 
 # Class for blog post with automatic datetime added at creation
 class Blog(db.Model):
