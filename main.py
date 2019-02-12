@@ -1,7 +1,6 @@
 from datetime import datetime
 from flask import Flask, request, redirect, render_template, session, flash
 from flask_sqlalchemy import SQLAlchemy
-import cgi
 
 # App & Database Initialization
 app = Flask(__name__)
@@ -9,7 +8,7 @@ app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://build-a-blog:yes@localhost:8889/build-a-blog'
 app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
-app.secret_key = 'y337kGcys&zP3B'
+
 
 # Class for blog post with automatic datetime added at creation
 class Blog(db.Model):
@@ -25,12 +24,13 @@ class Blog(db.Model):
     def __repr__(self):
         return '<Blog %r>' % self.title
 
-
+@app.route('/posts', methods=['GET'])
 def get_posts():
     return Blog.query.all()
 
 
 # Get all posts ordered from newest to oldest
+@app.route('/get_ordered_posts', methods=['GET'])
 def get_ordered_posts():
     return Blog.query.order_by("date desc").all()
 
@@ -70,9 +70,9 @@ def post():
     # Form validation for empty values
     if not title or not body:
         if title == '':
-            title_error = "You left the title field blank"
+            title_error = "Please provide a title"
         if body == '':
-            body_error = "You left the body field blank"
+            body_error = "Please write your blog"
         return redirect(f'/newpost?title={title}&body={body}&title_error={title_error}&body_error={body_error}')
 
     # Add new post to database
