@@ -1,12 +1,11 @@
-
 {% extends "base.html" %}
 
 {% block content %}
 
-    <h2>Blog Entries</h2>
+    <h2>Blog Entries by {{author}}</h2>
 
     {% if blogs|length == 0 %}
-    <p>No blog entries yet!</p>
+    <p>No blog entries by {{author}} yet!</p>
 
     {% else %}
 
@@ -16,7 +15,7 @@
             </a>
             <p>{{blog.body}}</p>
             <p class="blog_author">written by
-                <a href="./blog?user={{blog.owner.username}}">{{blog.owner.username}}</a>
+                <a href="./blog?user={{author}}">{{author}}</a>
             </p>
             <hr />
         {% endfor %}
